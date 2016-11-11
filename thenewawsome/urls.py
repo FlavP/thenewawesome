@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from thenewawsome.views import hello_world, root_page
+from thenewawsome.views import hello_world, root_page, random_number
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^helloworld/$', hello_world),
+    url(r'^random/(\d+)/$', random_number),
     url(r'^.?', root_page),
 ]
