@@ -24,5 +24,5 @@ urlpatterns = [
     url(r'^helloworld/$', hello_world),
     url(r'^random/(\d+)/$', random_number),
     url(r'^polls/', include('polls.urls')),
-    url(r'^.?', root_page),
+    url(r'^$', root_page),
 ]
