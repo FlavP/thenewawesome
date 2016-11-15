@@ -4,8 +4,9 @@ from .models import Question, Choice
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views import generic
 # Create your views here.
-
+'''
 def index(request):
     return HttpResponse("You are in the polls index")
 
@@ -31,7 +32,7 @@ def result(request, question_id):
 #create a "templates" folder in pols
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/result.html', {'question' : question})
-
+'''
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
 
@@ -48,4 +49,12 @@ def vote(request, question_id):
 
         return HttpResponseRedirect(reverse('polls:result', args=(question.id,)))
 
+#We replace index, result and details
+
+class IndexView(generic.ListView):
+    template_name = 'polls/index.html'
+    context_object_name = 'latest_question_list'
+
+    def get_queryset(self):
+        return Question.objects.order_by('-pub_date')[:5]
 

@@ -10,11 +10,20 @@ app_name = 'polls'
     # the parentheses
     # [0-9]+ says we will match 1 or more numbers
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    #Old
+    #url(r'^$', views.index, name='index'),
     #url(r'^index/$', views.index),
-    url(r'^(?P<question_id>[0-9]+)/$', views.details, name='details'),
+    #New
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    #Old
+    #url(r'^(?P<question_id>[0-9]+)/$', views.details, name='details'),
+    #New
+    url(r'^(?P<pk>[0-9]+)/$', views.DetailsView.as_view(), name='details'),
     url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
-    url(r'^(?P<question_id>[0-9]+)/result/$', views.result, name='result')
+    #old
+    #url(r'^(?P<question_id>[0-9]+)/result/$', views.result, name='result')
+    #new
+    ulr(r'^(?P<pk>[0-9]+)/result/$', views.ResultView.as_view(), name='result')
     #url(r'^deeper/$', views.some_else),
     ]
 #minutul 7:27
