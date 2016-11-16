@@ -23,7 +23,7 @@ urlpatterns = [
     #old
     #url(r'^(?P<question_id>[0-9]+)/result/$', views.result, name='result')
     #new
-    ulr(r'^(?P<pk>[0-9]+)/result/$', views.ResultView.as_view(), name='result')
+    url(r'^(?P<pk>[0-9]+)/result/$', views.ResultView.as_view(), name='result')
     #url(r'^deeper/$', views.some_else),
     ]
 #minutul 7:27
